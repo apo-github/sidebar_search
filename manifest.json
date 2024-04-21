@@ -1,0 +1,21 @@
+{
+  "name": "web Search", 
+  "manifest_version": 3, 
+  "description": "open sidebar for searching",
+  "version": "0.9", 
+  
+  "permissions":[
+    "sidePanel"
+  ],
+  "side_panel":{
+    "default_path": "side_panel.html"
+  },
+  "background":{
+    "service_worker": "scripts/background.js"
+  },
+  "action": {
+    "default_title": "Click to open panel",
+    "default_icon": "images/my-extension.png"
+  }
+}
+  
