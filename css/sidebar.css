@@ -1,21 +1,25 @@
-.extension-sidebar{
-    background-color: white;
-    width: 0px;
-    height: 100%;
-    position: fixed; /*windowを基準に位置を決定する*/
-    z-index:calc(infinity);
-    top: 0;
-    right: 0;
-    overflow-y: auto; /*あふれたときにスクロールバーを表示*/
-    
-    text-align: center;
-    
-    transition: .5s;
+#extension-sidebar-wrapper {
+  position: fixed; /*windowを基準に位置を決定する*/
+  top: 0;
+  right: 0;
+  z-index: calc(infinity);
+  min-width: 0;
+  max-width: 0;
+  height: 100%;
+  overflow-y: auto; /*あふれたときにスクロールバーを表示*/
+  box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
+  text-align: center;
+  transition: .5s;
+}
+
+#extension-sidebar {
+  width: 100%;
+  height: 100%;
 }
 
 div.extension-sidebar-open {
-    width: 38vw;
-    padding-left: 30px;
-    padding-right: 10px;
-    overflow-wrap: break-word;
+  min-width: 38vw !important;
+  max-width: none !important;
+
+  overflow-wrap: break-word;
 }

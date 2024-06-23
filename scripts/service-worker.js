@@ -23,27 +23,27 @@ chrome.action.onClicked.addListener((tab) => {
 });
 
 
-chrome.runtime.onMessage.addListener((message, _sender, _sendResponse) => {
-  fetch(message.url, {
-    'method': 'GET'
-  })
-  .then(response => {
-    return response.text();
-  })
-  .then(text => {
-    getCurrentTab().then((tab) => {
-      // console.log(text)
-      chrome.tabs.sendMessage(tab.id, {response: text}).catch((error) => { // contextへの送信はtabs.sendMessageしか使えないので注意
-        console.log("send ng", error);
-      });
-    });
+// chrome.runtime.onMessage.addListener((message, _sender, _sendResponse) => {
+//   fetch(message.url, {
+//     'method': 'GET'
+//   })
+//   .then(response => {
+//     return response.text();
+//   })
+//   .then(text => {
+//     getCurrentTab().then((tab) => {
+//       // console.log(text)
+//       chrome.tabs.sendMessage(tab.id, {response: text}).catch((error) => { // contextへの送信はtabs.sendMessageしか使えないので注意
+//         console.log("send ng", error);
+//       });
+//     });
     
-  })
-  .catch((error) => {
-    console.log("エラーが発生しました。", error)
-  })
-  // return true
-})
+//   })
+//   .catch((error) => {
+//     console.log("エラーが発生しました。", error)
+//   })
+//   // return true
+// })
 
 
 
