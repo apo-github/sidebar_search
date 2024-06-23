@@ -1,0 +1,21 @@
+.extension-sidebar{
+    background-color: white;
+    width: 0px;
+    height: 100%;
+    position: fixed; /*windowを基準に位置を決定する*/
+    z-index:calc(infinity);
+    top: 0;
+    right: 0;
+    overflow-y: auto; /*あふれたときにスクロールバーを表示*/
+    
+    text-align: center;
+    
+    transition: .5s;
+}
+
+div.extension-sidebar-open {
+    width: 38vw;
+    padding-left: 30px;
+    padding-right: 10px;
+    overflow-wrap: break-word;
+}

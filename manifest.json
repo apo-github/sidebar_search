@@ -1,21 +1,36 @@
 {
-  "name": "web Search", 
+  "name": "　", 
   "manifest_version": 3, 
   "description": "open sidebar for searching",
-  "version": "0.9", 
+  "version": "1.0", 
   
-  "permissions":[
-    "sidePanel"
+  "permissions":["scripting", "activeTab", "tabs"],
+  "host_permissions": [
+    "*://*/*"
   ],
-  "side_panel":{
-    "default_path": "side_panel.html"
-  },
   "background":{
-    "service_worker": "scripts/background.js"
+    "service_worker": "./scripts/service-worker.js"
   },
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "css": ["./css/sidebar.css"],
+      "js": [
+        "./scripts/content-script.js"
+      ]
+    }
+  ],
   "action": {
     "default_title": "Click to open panel",
-    "default_icon": "images/my-extension.png"
+    "default_icon": "./images/icon16.png"
+  },
+
+  "icons": {
+    "16": "./images/icon16.png",
+    "32": "./images/icon32.png",
+    "48": "./images/icon48.png",
+    "128": "./images/icon128.png"
   }
+
 }
   
