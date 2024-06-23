@@ -6,8 +6,8 @@
 console.log("Read: content-script.js");
 
 function init(){
-  tag_aside = '<div id="extension-insert-area" class="extension-sidebar"><div>'
-  const page_body = document.getElementsByTagName('body')[0]
+  tag_aside = '<div id="extension-insert-area" class="extension-sidebar"></div>'
+  const page_body = document.querySelector('body')
   const page_body_array = Array.from(page_body)
   
   console.log(page_body)
@@ -20,27 +20,21 @@ function init(){
 } 
 
 init()
-const sidebar = document.getElementsByClassName('extension-sidebar')[0];
+const sidebar = document.querySelector('.extension-sidebar');
 
+// マウスボタンが離され時
+document.addEventListener("mouseup", function () {
+    let selectedText = document.getSelection().toString();
 
-//テキストが選択されたとき
-document.onselectionchange = function () {
-  let selectedText = document.getSelection().toString();
-  let url = "https://www.google.com/search?q=" + selectedText
-  console.log(selectedText);
-  
-
-  // マウスボタンが離され時
-  document.onmouseup = function () {
     if (selectedText != ""){
       // サイドバーを表示
       sidebar.classList.add("extension-sidebar-open");
-
       //urlをbackgroundに送信
+      let url = "https://www.google.com/search?q=" + selectedText
+      console.log(selectedText);
       chrome.runtime.sendMessage({ url: url });
-    }
-  }
-}
+     }
+  });
 
 //マウスがサイドバーから離れたとき
 sidebar.onmouseleave = function() {
@@ -50,7 +44,7 @@ sidebar.onmouseleave = function() {
 
 // 要素挿入関数
 function insert_contents(response){
-  const insert_area = document.getElementById('extension-insert-area')
+  const insert_area = document.querySelector('#extension-insert-area');
 
   //子要素をすべて削除
   while (insert_area.firstChild) {
